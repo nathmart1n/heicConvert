@@ -5,3 +5,5 @@ __pycache__/
 var/
 .vscode/
 node_modules/
+*.HEIC
+*.jpg

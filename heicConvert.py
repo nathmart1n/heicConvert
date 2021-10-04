@@ -8,38 +8,28 @@ from tkinter.messagebox import showinfo
 
 def select_file():
     filetypes = (
-        ('text files', '*.txt'),
+        ('image files', '*.PNG *.jpg *.jpeg *.HEIC'),
         ('All files', '*.*')
     )
 
     filename = fd.askopenfilename(
         title='Open a file',
-        initialdir='/',
+        initialdir='/home/nathmart/src',
         filetypes=filetypes)
-
+    print(filename)
     showinfo(
         title='Selected File',
         message=filename
     )
 
 
-SOURCE = [
-    "HEIC",
-    "PNG",
-    "JPG"
-]
-
 CONVERT = [
-    "JPG",
+    "jpg",
     "HEIC",
     "PNG"
 ]
 
 window = tk.Tk()
-window.geometry("350x200")
-source_variable = tk.StringVar(window)
-source_variable.set(SOURCE[0])
-source = tk.OptionMenu(window, source_variable, *SOURCE)
 
 convert_variable = tk.StringVar(window)
 convert_variable.set(CONVERT[0])
@@ -52,14 +42,11 @@ button = tk.Button(
     bg="blue",
     fg="white",
 )
-l1 = tk.Label(window, text="Source Filetype", font=('Aerial 12 bold'))
-l2 = tk.Label(window, text="Converted Filetype", font=('Aerial 12 bold'))
+l2 = tk.Label(window, text="Filetype to convert to", font=('Aerial 12 bold'))
 
-l1.grid(row=0, column=0, padx=10, pady=5)
-l2.grid(row=0, column=1, padx=3, pady=5)
+l2.grid(row=0, column=0, padx=10, pady=5)
 
-source.grid(row=1, column=0, padx=10, pady=5)
-convert.grid(row=1, column=1, padx=10, pady=5)
+convert.grid(row=1, column=0, padx=10, pady=5)
 
 open_button = tk.Button(
     window,
@@ -67,7 +54,7 @@ open_button = tk.Button(
     command=select_file
 )
 
-open_button.grid(row=2, columnspan=2)
+open_button.grid(row=2, column=0, padx=10, pady=5)
 
-button.grid(row=3, columnspan=2)
+button.grid(row=3, column=0, padx=10, pady=5)
 window.mainloop()
